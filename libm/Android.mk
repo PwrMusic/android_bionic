@@ -238,11 +238,11 @@ else
   else
 	  ifeq ($(TARGET_USE_SAMSUNG_BIONIC_OPTIMIZATION),true)
 		libm_arm_src_files += \
-		  arm/eyxnos5410/e_pow.S \
-		  arm/eyxnos5410/s_cos.S \
-		  arm/eyxnos5410/s_sin.S \
-		  arm/eyxnos5410/e_sqrtf.S \
-		  arm/eyxnos5410/e_sqrt.S
+		  arm/exynos5410/e_pow.S \
+		  arm/exynos5410/s_cos.S \
+		  arm/exynos5410/s_sin.S \
+		  arm/exynos5410/e_sqrtf.S \
+		  arm/exynos5410/e_sqrt.S
 		libm_arm_cflags += -fno-if-conversion
 	  else
 		libm_common_src_files += \
