@@ -1,6 +1,12 @@
+ifeq ($(TARGET_SOC),exynos5410)
+$(call libc-add-cpu-variant-src,MEMCPY,arch-arm/cortex-a15/bionic/memcpy_5410.S)
+else
 $(call libc-add-cpu-variant-src,MEMCPY,arch-arm/cortex-a15/bionic/memcpy.S)
+endif
 $(call libc-add-cpu-variant-src,MEMSET,arch-arm/cortex-a15/bionic/memset.S)
+ifneq ($(TARGET_SOC),exynos5410)
 $(call libc-add-cpu-variant-src,MEMMOVE,arch-arm/krait/bionic/memmove.S)
+endif
 $(call libc-add-cpu-variant-src,BCOPY,)
 $(call libc-add-cpu-variant-src,STRCAT,arch-arm/cortex-a15/bionic/strcat.S)
 $(call libc-add-cpu-variant-src,STRCMP,arch-arm/cortex-a15/bionic/strcmp.S)

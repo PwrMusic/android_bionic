@@ -382,6 +382,11 @@ libc_common_src_files += \
 	upstream-freebsd/lib/libc/string/wmemcmp.c \
 	upstream-freebsd/lib/libc/string/wcslen.c \
 	upstream-freebsd/lib/libc/string/wcscat.c
+	
+ifeq ($(TARGET_SOC),exynos5410)
+libc_common_src_files += \
+	arch-arm/bionic/memmove.S
+endif # arm_exynos5410
 
 # These files need to be arm so that gdbserver
 # can set breakpoints in them without messing
