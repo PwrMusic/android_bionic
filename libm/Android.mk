@@ -236,12 +236,22 @@ else
       arm/e_sqrt.S
     libm_arm_cflags += -DKRAIT_NEON_OPTIMIZATION -fno-if-conversion
   else
-    libm_common_src_files += \
-      upstream-freebsd/lib/msun/src/s_cos.c \
-      upstream-freebsd/lib/msun/src/s_sin.c \
-      upstream-freebsd/lib/msun/src/e_sqrtf.c \
-      upstream-freebsd/lib/msun/src/e_sqrt.c
-    endif
+	  ifeq ($(TARGET_USE_SAMSUNG_BIONIC_OPTIMIZATION),true)
+		libm_arm_src_files += \
+		  arm/exynos5410/e_pow.S \
+		  arm/exynos5410/s_cos.S \
+		  arm/exynos5410/s_sin.S \
+		  arm/exynos5410/e_sqrtf.S \
+		  arm/exynos5410/e_sqrt.S
+		libm_arm_cflags += -fno-if-conversion
+	  else
+		libm_common_src_files += \
+		  upstream-freebsd/lib/msun/src/s_cos.c \
+		  upstream-freebsd/lib/msun/src/s_sin.c \
+		  upstream-freebsd/lib/msun/src/e_sqrtf.c \
+		  upstream-freebsd/lib/msun/src/e_sqrt.c
+	  endif
+  endif
 endif
 
 libm_x86_includes := $(LOCAL_PATH)/i386 $(LOCAL_PATH)/i387
